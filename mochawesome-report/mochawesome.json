@@ -1,0 +1,232 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 6,
+    "passes": 6,
+    "pending": 0,
+    "failures": 0,
+    "start": "2019-09-16T09:34:40.625Z",
+    "end": "2019-09-16T09:35:17.309Z",
+    "duration": 36684,
+    "testsRegistered": 6,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "0475e2df-15d8-40dd-b93a-263ad3161f07",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [
+        {
+          "title": "\"before all\" hook",
+          "fullTitle": "\"before all\" hook",
+          "timedOut": false,
+          "duration": 451,
+          "state": null,
+          "speed": null,
+          "pass": false,
+          "fail": false,
+          "pending": false,
+          "context": null,
+          "code": "browser = await puppeteer.launch({\n    headless: config.isHeadless,\n    slowMo: config.slowMo,\n    devtools: config.isDevtools,\n    timeout: config.launchTimeOut,\n})\n\npage = await browser.newPage()\nawait page.setDefaultTimeout(config.waitingTimeOut)\nawait page.setViewport({\n    width: config.viewportWidth,\n    height: config.viewportHeight\n})",
+          "err": {},
+          "uuid": "5b11ff34-ded5-4a46-8150-6255e37bd52c",
+          "parentUUID": "0475e2df-15d8-40dd-b93a-263ad3161f07",
+          "isHook": true,
+          "skipped": false
+        }
+      ],
+      "afterHooks": [
+        {
+          "title": "\"after all\" hook",
+          "fullTitle": "\"after all\" hook",
+          "timedOut": false,
+          "duration": 365,
+          "state": null,
+          "speed": null,
+          "pass": false,
+          "fail": false,
+          "pending": false,
+          "context": null,
+          "code": "await browser.close()",
+          "err": {},
+          "uuid": "c5c45677-a53e-40ce-8687-a2c349c0f87a",
+          "parentUUID": "0475e2df-15d8-40dd-b93a-263ad3161f07",
+          "isHook": true,
+          "skipped": false
+        }
+      ],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "9c32baa0-2ca2-4607-a7a0-01772b75b3f2",
+          "title": "Amazon homepage",
+          "fullFile": "d:\\GitHub\\Puppeteer_Test_Amazon\\tests\\test_amazon.js",
+          "file": "\\tests\\test_amazon.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "go to URL",
+              "fullTitle": "Amazon homepage go to URL",
+              "timedOut": false,
+              "duration": 13271,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await helpers.loadUrl(page,config.baseUrl)",
+              "err": {},
+              "uuid": "d52fdb53-8880-4593-8bbb-8218cdc6c4be",
+              "parentUUID": "9c32baa0-2ca2-4607-a7a0-01772b75b3f2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Search gatagory product : Searching BOOKs of \"George R. R. Martin\" ",
+              "fullTitle": "Amazon homepage Search gatagory product : Searching BOOKs of \"George R. R. Martin\" ",
+              "timedOut": false,
+              "duration": 5603,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await page.select('#searchDropdownBox','search-alias=stripbooks-intl-ship') \nawait page.type('#twotabsearchtextbox','George R. R. Martin')\nawait page.click('.nav-input')\n// keep photo and keep all data at PDF\nawait page.screenshot({path: `SearchtestA-${date}.png`})\nawait page.pdf({path: `outputA-${date}.pdf`, format: 'A4'})",
+              "err": {},
+              "uuid": "ca347efc-9c66-4f90-825c-7f9000b0328e",
+              "parentUUID": "9c32baa0-2ca2-4607-a7a0-01772b75b3f2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Choose the book \"The World of Ice & Fire: The Untold History of Westeros and the Game of Thrones\" ",
+              "fullTitle": "Amazon homepage Choose the book \"The World of Ice & Fire: The Untold History of Westeros and the Game of Thrones\" ",
+              "timedOut": false,
+              "duration": 829,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await page.waitForXPath('//span[contains(text(),\"The World of Ice & Fire: The Untold History of Westeros and the Game of Thrones\")]');\n        const [book] = await page.$x('//span[contains(text(),\"The World of Ice & Fire: The Untold History of Westeros and the Game of Thrones\")]');\n        if(book) book.click();\n        await page.screenshot({path: `SearchtestA1-${date}.png`})",
+              "err": {},
+              "uuid": "3688e2fd-b359-42ae-ae56-d389f3a3ec71",
+              "parentUUID": "9c32baa0-2ca2-4607-a7a0-01772b75b3f2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Check Detail about this book",
+              "fullTitle": "Amazon homepage Check Detail about this book",
+              "timedOut": false,
+              "duration": 4652,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await page.waitFor(1000);\nawait page.waitForSelector('#productTitle')\n\nconst titleDetail = await amazon.getBookDetails(page)\nconsole.log(titleDetail)\nexpect(titleDetail.Title).to.equal(\"The World of Ice & Fire: The Untold History of Westeros and the Game of Thrones\")\nexpect(titleDetail.Rating).to.equal(\"2,057 customer reviews\")\nexpect(titleDetail.TotalRatings).to.equal(\"4.6 out of 5 stars\")\n// keep photo and keep all data at PDF\nawait page.screenshot({path: `SearchtestB-${date}.png`})\nawait page.pdf({path: `outputB-${date}.pdf`, format: 'A4'})",
+              "err": {},
+              "uuid": "c7b313e6-6e4b-4065-8a6e-4d5c5374fc1c",
+              "parentUUID": "9c32baa0-2ca2-4607-a7a0-01772b75b3f2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Buy a book : The World of Ice & Fire",
+              "fullTitle": "Amazon homepage Buy a book : The World of Ice & Fire",
+              "timedOut": false,
+              "duration": 4022,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await page.waitFor(1000)\nawait page.waitForXPath('//*[@id=\"a-autoid-0-announce\"]');\nconst [kindle] = await page.$x('//*[@id=\"a-autoid-0-announce\"]');\nif(kindle) kindle.click();\nconst priceDetail = await amazon.getPrice(page)\nconsole.log(priceDetail)\n// keep photo and keep all data at PDF\nawait page.screenshot({path: `SearchtestC-${date}.png`})\nawait page.pdf({path: `outputC-${date}.pdf`, format: 'A4'})",
+              "err": {},
+              "uuid": "6fef4ac7-5f75-4317-8ab2-2102d4f774fe",
+              "parentUUID": "9c32baa0-2ca2-4607-a7a0-01772b75b3f2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Sign in for buy a book",
+              "fullTitle": "Amazon homepage Sign in for buy a book",
+              "timedOut": false,
+              "duration": 7458,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await page.waitFor(1000)\nawait page.waitForSelector('#one-click-button')\nawait page.click('#one-click-button')\nawait page.screenshot({path: `SearchtestD-${date}.png`})\nawait page.waitForSelector('#ap_email')\nawait page.type('#ap_email','Piyathida_s101@hotmail.com')\nawait page.screenshot({path: `SearchtestD1-${date}.png`})\nawait page.click('#continue')\nawait page.waitForSelector('#ap_password')\nawait page.type('#ap_password','123456San')\nawait page.click('#signInSubmit')\n\nawait page.screenshot({path: `SearchtestD2-${date}.png`})",
+              "err": {},
+              "uuid": "72da590e-3913-4981-9c58-40a208d1d712",
+              "parentUUID": "9c32baa0-2ca2-4607-a7a0-01772b75b3f2",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d52fdb53-8880-4593-8bbb-8218cdc6c4be",
+            "ca347efc-9c66-4f90-825c-7f9000b0328e",
+            "3688e2fd-b359-42ae-ae56-d389f3a3ec71",
+            "c7b313e6-6e4b-4065-8a6e-4d5c5374fc1c",
+            "6fef4ac7-5f75-4317-8ab2-2102d4f774fe",
+            "72da590e-3913-4981-9c58-40a208d1d712"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 35835,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 30000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "6.1.4"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false
+      },
+      "version": "4.1.0"
+    },
+    "marge": {
+      "options": null,
+      "version": "4.0.1"
+    }
+  }
+}

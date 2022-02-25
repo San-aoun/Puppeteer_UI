@@ -1,0 +1,24 @@
+{
+  "name": "pptr-project",
+  "version": "1.0.0",
+  "description": "Test WEB UI",
+  "main": "index.js",
+  "scripts": {
+    "test": "D:/GitHub/Puppeteer_Test_Amazon/node_modules/.bin/mocha --timeout=30000 ./tests/test_amazon.js --reporter mochawesome",
+    "exam": "D:/GitHub/Puppeteer_Test_Amazon/node_modules/.bin/mocha --timeout=30000 ./tests/test_validateFieldCalAge.js --reporter mochawesome --reporter-options reportDir=report,reportFilename=Report-Exam"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "jquery": "^3.4.1",
+    "jsdom": "^15.1.1",
+    "mocha": "^6.1.4",
+    "puppeteer": "^1.17.0",
+    "puppeteer-core": "^1.19.0",
+    "puppeteer-recorder": "^1.0.7"
+  },
+  "devDependencies": {
+    "mochawesome": "^4.1.0"
+  }
+}
